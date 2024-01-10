@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - clasificación de leucemia.</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
+    <!-- Header -->
+    <header class="bg-gradient-to-b from-indigo-500 via-blue-500 to-cyan-500 py-8">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-semibold text-white">Iniciar sesión para el diagnostico y clasificación de la leucemia.</h1>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <main class="container mx-auto my-8 p-8 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-6">Iniciar sesión</h2>
+        <form action="/login" method="POST">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 font-medium">Nombre de usuario</label>
+                <input type="text" name="username" id="username" class="mt-1 p-2 border rounded-md w-full">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 font-medium">Contraseña</label>
+                <input type="password" name="password" id="password" class="mt-1 p-2 border rounded-md w-full">
+            </div>
+            <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600">Empezar a clasificar</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-white">
+        <div class="container mx-auto text-center">
+            <p>&copy; Leukemia Classification</p>
+        </div>
+    </footer>
+</body>
+</html>

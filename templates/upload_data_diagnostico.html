@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Data Diagnóstico</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-gradient-to-b from-teal-500 via-teal-400 to-blue-500 py-8">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-semibold text-white">Diagnóstico de estado de la Leucemia.</h1>
+            <h2 class="text-4xl font-semibold text-white">Clasificación del estado de una celula con ALL.</h2>
+            <p class="mt-4 text-lg text-white">Tu fuente confiable para el diagnóstico de leucemia.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-8 p-8 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Subir Imagen.</h2>
+        <form action="/upload_diagnostico" method="post" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label for="image" class="block text-gray-700 font-medium">Selecciona una imagen</label>
+                <input type="file" name="image" id="image" class="mt-1 p-2 border rounded-md w-full">
+            </div>
+            <div class="mb-4">
+                <label for="first_name" class="block text-gray-700 font-medium">Nombre</label>
+                <input type="text" name="first_name" id="first_name" class="mt-1 p-2 border rounded-md w-full" required>
+            </div>
+            <div class="mb-4">
+                <label for="last_name" class="block text-gray-700 font-medium">Apellido</label>
+                <input type="text" name="last_name" id="last_name" class="mt-1 p-2 border rounded-md w-full" required>
+            </div>
+            <!-- Hidden input field to store classification result -->
+            <input type="hidden" id="classification_result" name="classification_result">
+            <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600">Enviar.</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-t from-gray-900 to-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; Clasificación de Leucemia</p>
+            <a href="/upload" class="block text-center text-blue-500 hover:underline">Clasifica si una celula tiene leucemia o no.</a>
+            <a href="/database" class="block text-center text-blue-500 hover:underline">Accede a la Base de Datos.</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript block -->
+    <script>
+        document.querySelector('input[type="file"]').addEventListener('change', function() {
+            const fileInput = this;
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.style.display = 'block';
+
+                    // Always set the classification result as 'none' for now
+                    const classificationResult = 'none';
+
+                    // Set the value of the hidden input field
+                    document.getElementById('classification_result').value = classificationResult;
+
+                    // Redirect to /result_diagnostico
+                    window.location.href = `/result_diagnostico?result=${classificationResult}`;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>

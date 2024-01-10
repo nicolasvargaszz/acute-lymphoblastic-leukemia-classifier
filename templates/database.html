@@ -1,0 +1,42 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Database</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100">
+        <!-- Header -->
+        <header class="bg-gradient-to-b from-teal-500 via-teal-400 to-blue-500 py-8">
+            <div class="container mx-auto text-center">
+                <h1 class="text-4xl font-semibold text-white">Database</h1>
+                <p class="mt-4 text-lg text-white">Resultados de la clasificación</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto my-8 p-8 bg-white rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Resultados</h2>
+
+            <!-- Display results as cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% for result in results %}
+                    <div class="bg-gray-200 p-4 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Paciente: {{ result.patient_first_name }} {{ result.patient_last_name }}</h3>
+                        <p class="mb-2">Resultado de la clasificación: {{ result.classification_result }}</p>
+                        <a href="{{ result.image_path }}" download="patient_image.jpg" class="text-blue-500 hover:underline">Download Image</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gradient-to-t from-gray-900 to-gray-800 text-white py-4">
+            <div class="container mx-auto text-center">
+                <p>&copy; Leukemia Classification</p>
+            </div>
+        </footer>
+    </body>
+    </html>

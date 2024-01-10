@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-gradient-to-b from-teal-500 via-teal-400 to-blue-500 py-8">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-semibold text-white">Diagnóstico de Leucemia</h1>
+            <h2 class="text-4xl font-semibold text-white">Diagnostica si una célula cuenta o no con leucemia.</h2>
+            <p class="mt-4 text-lg text-white">Tu fuente confiable para el diagnóstico de leucemia.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-8 p-8 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Subir imagen.</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label for="image" class="block text-gray-700 font-medium">Selecciona una imagen</label>
+                <input type="file" name="image" id="image" class="mt-1 p-2 border rounded-md w-full">
+            </div>
+            <div class="mb-4">
+                <label for="first_name" class="block text-gray-700 font-medium">Nombre</label>
+                <input type="text" name="first_name" id="first_name" class="mt-1 p-2 border rounded-md w-full" required>
+            </div>
+            <div class="mb-4">
+                <label for="last_name" class="block text-gray-700 font-medium">Apellido</label>
+                <input type="text" name="last_name" id="last_name" class="mt-1 p-2 border rounded-md w-full" required>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600">Enviar.</button>
+        </form>
+
+        <!-- Uploaded Image Display -->
+        <div class="mt-8 bg-gray-200 p-4 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold mb-4">Imagen cargada</h2>
+            <img id="uploaded-image" src="" style="display: none; max-width: 100%;" alt="Imagen cargada">
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-t from-gray-900 to-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; Clasificación de leucemia</p>
+            <a href="/upload_diagnostico" class="block text-center text-blue-500 hover:underline">Diagnostica el estado de una celula con leucemia</a>
+            <a href="/database" class="block text-center text-blue-500 hover:underline">Accede a la Base de Datos.</a>
+        </div>
+    </footer>
+
+    <!-- Retain Existing Script for Image Display -->
+    <script>
+        document.querySelector('input[type="file"]').addEventListener('change', function() {
+            const fileInput = this;
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.style.display = 'block';
+
+                    // Redirige a la página de resultado según la clasificación
+                    const classificationResult = document.getElementById('classification_result').value;
+                    window.location.href = `/result_${classificationResult}?result=Loading...`;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>

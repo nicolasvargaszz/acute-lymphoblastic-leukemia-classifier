@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leukemia Classification</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin: 0 -2.5%; /* Agrega un margen negativo para corregir el espacio blanco */
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.3s ease;
+            margin: 0;
+        }
+
+        .carousel img {
+            flex: 0 0 calc(100% - 5%); /* Tamaño ajustado con margen izquierdo y derecho */
+            max-height: 400px;
+            margin: 0 2.5%; /* Agrega un margen entre las imágenes */
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .carousel-control.prev {
+            left: 0;
+        }
+
+        .carousel-control.next {
+            right: 0;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carousel-indicator {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 text-white">
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="{{ url_for('static', filename='images/logo-removebg-preview.png') }}" alt="Logo" class="w-20 h-13">
+                <a href="/" class="text-white text-2xl font-semibold">Clasificación de leucemia</a>
+            </div>
+            <ul class="flex space-x-4">
+                <li><a href="#about" class="text-white p-5">Información sobre la leucemia</a></li>
+                <li><a href="https://www.google.com/search?q=incan&oq=INCAN&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDwyBggCEEUYPNIBCDEwOTFqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8" class="text-white p-5">INCAN Paraguay</a></li>
+                <li><a href="/login" class="text-white p-5">Iniciar sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-b from-pink-500 via-red-500 to-yellow-500 py-8">
+        <div class="container mx-auto text-center p-6">
+            <h1 class="text-4xl font-semibold">Bienvenido al sistema de clasificación</h1>
+            <p class="mt-4 text-lg">La aplicación para la clasificación de LLA</p>
+        </div>
+    </header>
+    <section>
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="{{ url_for('static', filename='images/leucemia.jpg') }}" alt="Imagen 1">
+                <img src="{{ url_for('static', filename='images/ChildhoodLeukemia_share.jpg') }}" alt="Imagen 2">
+                <img src="{{ url_for('static', filename='images/leucemia_linfocitica_aguda.jpg') }}" alt="Imagen 3">
+            </div>
+            <button class="carousel-control prev" onclick="prevImage()"><</button>
+            <button class="carousel-control next" onclick="nextImage()">></button>
+            <div class="carousel-indicators">
+                <div class="carousel-indicator" onclick="showImage(0)"></div>
+                <div class="carousel-indicator" onclick="showImage(1)"></div>
+                <div class="carousel-indicator" onclick="showImage(2)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gradient-to-b from-green-500 via-green-400 to-teal-500 py-16">
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="p-6 rounded-lg shadow-lg bg-white">
+                <h2 class="text-3xl font-semibold text-gray-800">Qué es la Leucemia?</h2>
+                <p class="mt-4 text-gray-600">
+                    La leucemia linfoblástica aguda (LLA) es el cáncer más frecuente en los niños pero también ocurre en adultos. La afectación del sistema nervioso central es común; la mayoría de los pacientes reciben quimioterapia y corticosteroides intratecales y algunas veces radioterapia del sistema nervioso central.
+                </p>
+            </div>
+            <div class="relative">
+                <img src="{{ url_for('static', filename='images/leukemia_image.jpg') }}" alt="Leukemia Image" class="rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gradient-to-r from-yellow-500 via-yellow-400 to-orange-500 py-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-semibold text-white">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div class="p-6 rounded-lg shadow-lg bg-red-500 text-white p-2">
+                    <h3 class="text-2xl font-semibold text-white-800">Diagnósticos precisos.</h3>
+                    <p class="mt-4 text-white-600">Se han estudiado distintos tipos de algoritmos para la clasificación de leucemia para poder determinar que el algoritmo más óptimo es: XXXXX con un XX% de precisión.</p>
+                </div>
+                <div class="p-6 rounded-lg shadow-lg bg-red-500 text-white">
+                    <h3 class="text-2xl font-semibold text-white-800">User-Friendly</h3>
+                    <p class="mt-4 text-white-600">La plataforma está diseñada para ser intuitiva y tiene un uso sencillo para facilitar el trabajo al doctor.</p>
+                </div>
+                <div class="p-6 rounded-lg shadow-lg bg-red-500 text-white">
+                    <h3 class="text-2xl font-semibold text-white-800">Resultados rápidos y correctamente almacenados</h3>
+                    <p class="mt-4 text-white-600">Esta plataforma provee resultados rápidos ya que está optimizada al máximo, a su vez, los datos serán guardados en una base de datos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-gradient-to-b from-green-500 via-green-400 to-teal-500 py-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-semibold text-white">Listo para empezar?</h2>
+            <p class="p-6 text-black-200">Inicia sesión para empezar la clasificación y acceder a las BBDD.</p>
+            <a href="/login" class="mt-8 bg-red-500 text-white font-semibold px-6 py-3 rounded-full hover-bg-indigo-600">Log In</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; clasificación de Leucemia</p>
+        </div>
+    </footer>
+
+    <!-- Carousel Script -->
+    <script>
+        const images = document.querySelectorAll('.carousel img');
+        const dots = document.querySelectorAll('.carousel-indicator');
+        let currentImageIndex = 0;
+
+        function showImage(index) {
+            currentImageIndex = index;
+            images.forEach((image, i) => {
+                if (i === index) {
+                    image.style.display = 'block';
+                    dots[i].classList.add('bg-white');
+                } else {
+                    image.style.display = 'none';
+                    dots[i].classList.remove('bg-white');
+                }
+            });
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        setInterval(nextImage, 5000); // Cambia la imagen cada 5 segundos
+    </script>
+</body>
+</html>

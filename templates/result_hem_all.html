@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - HEM or ALL</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md max-w-md">
+        <h1 class="text-3xl font-bold mb-4 text-blue-600">Resultado: HEM o ALL </h1>
+        <p>HEM: Celulas sin leucemia, ALL: Leucemia linfoblástica aguda</p>
+        <p class="mb-4">La imagen subida representa a la clase:</p>
+        <div class="bg-blue-200 text-blue-800 text-center py-2 px-4 rounded-md mb-4">
+            <strong>{{ result }}</strong>
+        </div>
+        <a href="/upload" class="block text-center text-blue-500 hover:underline">Volver a clasificar.</a>
+    </div>
+</body>
+
+</html>
