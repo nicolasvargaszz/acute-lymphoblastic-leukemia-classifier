@@ -11,10 +11,10 @@ import pickle
 import matplotlib.pyplot as plt
 
 # Define the categories
-Categories = ['hem', 'all']
+Categories = ['images', 'LLA']
 
 # Specify the directory where your image subfolders are located
-datadir = './C-NMC_Leukemia/'  # Update with the correct directory path
+datadir = './imagenesconysinLLA'  # Update with the correct directory path
 
 flat_data_arr = []  # Define an empty list to store flattened image data
 target_arr = []  # Define an empty list to store target labels
