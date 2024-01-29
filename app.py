@@ -8,12 +8,15 @@ import numpy as np
 from skimage.io import imread
 from skimage.transform import resize
 import pickle
+from datetime import datetime
+
 
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///results.db'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db) 
 
 Categories = ['hem', 'all']
 
@@ -31,6 +34,7 @@ class Result(db.Model):
     patient_last_name = db.Column(db.String(100))
     image_path = db.Column(db.String(200))
     classification_result = db.Column(db.String(50))
+    registration_date = db.Column(db.DateTime,default=datetime.utcnow)
 
 
 def classify_image_with_model(image_path):
@@ -86,12 +90,14 @@ def upload():
 
                 result = classify_image_with_model(image_path)
 
+                current_date = datetime.utcnow()
                 os.remove(image_path)
                 new_result = Result(
                     patient_first_name=request.form['first_name'],
                     patient_last_name=request.form['last_name'],
                     image_path=image_path,
-                    classification_result=result
+                    classification_result=result,
+                    registration_date=current_date
                 )
                 db.session.add(new_result)
                 db.session.commit()
@@ -113,7 +119,7 @@ def result_hem_all():
     return render_template('result_hem_all.html', result=result)
 
 @app.route('/database', methods=['GET'])
-def database():
+def database():    
     results = Result.query.all()
     return render_template('database.html', results=results)
 
