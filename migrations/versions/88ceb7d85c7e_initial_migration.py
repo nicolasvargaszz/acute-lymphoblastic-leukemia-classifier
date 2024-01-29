@@ -7,6 +7,7 @@ Create Date: 2023-09-29 03:08:36.039922
 """
 from alembic import op
 import sqlalchemy as sa
+from datetime import datetime
 
 
 # revision identifiers, used by Alembic.
@@ -24,6 +25,7 @@ def upgrade():
     sa.Column('patient_last_name', sa.String(length=100), nullable=True),
     sa.Column('image_path', sa.String(length=200), nullable=True),
     sa.Column('classification_result', sa.String(length=50), nullable=True),
+    sa.Column('registration_date', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
