@@ -50,6 +50,9 @@ Access the app via http://localhost:5000 in your web browser.
 ### Results & Database: View classification results and stored data in the app's database.
 
 # Technologies Used
+
+
+
 Flask
 TensorFlow
 scikit-image
@@ -58,3 +61,12 @@ SQLite (for the database)
 NOTE: 
 ALL = acute lymphoblastic leukemia classifier SPA: Leucemia linfoblastica aguda
 HEM -> cell without leukemia
+
+
+
+
+![Ejemplo de los resultados:](ruta/a/la/imagen)
+
+![Ejemplo de los resultados:](ruta/a/la/imagen)
+
+![Ejemplo de los resultados:](ruta/a/la/imagen)
