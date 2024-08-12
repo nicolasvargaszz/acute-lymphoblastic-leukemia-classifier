@@ -3,7 +3,6 @@ Welcome to Leukemia classifier, this is a proyect where will be using Machine le
 
 
 
-Absolutely, crafting a comprehensive README for your Leukemia Classifier Flask app will help users understand and navigate your project effectively. Here's a template you can use:
 
 Leukemia Classifier with Flask
 
