@@ -68,4 +68,4 @@ HEM -> cell without leukemia
 
 ![Ejemplo de los resultados:](https://github.com/nicolasvargaszz/acute-lymphoblastic-leukemia-classifier/blob/main/WhatsApp%20Image%202024-07-08%20at%2023.27.51.jpeg)
 
-![Ejemplo de los resultados:](https://github.com/nicolasvargaszz/acute-lymphoblastic-leukemia-classifier/blob/main/WhatsApp%20Image%202024-07-08%20at%2023.38.07.jpeg)
+![Ejemplo de los resultados:](https://github.com/nicolasvargaszz/acute-lymphoblastic-leukemia-classifier/blob/main/WhatsApp%20Image%202024-07-08%20at%2023.27.51%20(1).jpeg)
