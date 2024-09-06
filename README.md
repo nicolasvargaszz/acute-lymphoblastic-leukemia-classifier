@@ -1,71 +1,56 @@
-# acute-lymphoblastic-leukemia-classifier
-Welcome to Leukemia classifier, this is a proyect where will be using Machine learning, computer vision, and some others tools for the clasification of ALL (acute lymphoblastic leukemia)
+🩸 Acute Lymphoblastic Leukemia Classifier
+Welcome to the Leukemia Classifier project! This initiative employs machine learning, computer vision, and various tools to classify Acute Lymphoblastic Leukemia (ALL) images into distinct categories.
 
+🔬 Project Overview
+This project utilizes Flask, TensorFlow, and scikit-image to offer a user-friendly interface for leukemia image classification. It integrates two machine learning models:
 
-
-
-Leukemia Classifier with Flask
-
-A Flask web application that leverages machine learning models to classify leukemia images into specific categories.
-
-Overview
-This project uses Flask, TensorFlow, and scikit-image to provide a user-friendly interface for classifying leukemia images. It integrates two models: one for distinguishing between 'hem' and 'all' leukemia types and another for classifying 'Benign', 'Early', 'Pre', and 'Pro' leukemia stages.
-
-Features
-Image Classification: Upload leukemia images to classify them into specific types and stages.
-
-Model Integration: Leverages machine learning models to deliver accurate classification results.
-
-User Authentication: Secure login functionality for authorized access to diagnostic features.
-
-Setup Instructions
+One for distinguishing between 'hem' and 'all' leukemia types.
+Another for classifying the leukemia stages: 'Benign', 'Early', 'Pre', and 'Pro'.
+🌟 Features
+Image Classification: Upload leukemia images and classify them into specific types and stages.
+Model Integration: Combines machine learning models to provide accurate classification results.
+User Authentication: Secure login for authorized access to diagnostic features.
+🚀 Setup Instructions
 To set up and run this project locally, follow these steps:
 
 Clone the repository:
 
-bash
-Copy code
-git clone https://github.com/nicolasvargaszz/acute-lymphoblastic-leukemia-classifier.git
-cd leukemia-classifier
+git clone https://github.com/nicolasvargaszz/acute-lymphoblastic-leukemia-classifier.git cd leukemia-classifier
+
 Install dependencies:
 
-
-Copy code
 pip install -r requirements.txt
+
 Run the Flask app:
 
-
-Copy code
 python app.py
+
 Access the app via http://localhost:5000 in your web browser.
 
-# Usage
-### Home/Landing Page: Access the landing page displaying project information and functionality details.
+🛠️ Usage
+Home/Landing Page: Access the landing page showcasing project details and functionalities.
+Login: Authenticate as a doctor by entering valid credentials.
+Upload & Classify: Upload leukemia images for classification into specific types or stages.
+Results & Database: View classification results and stored data in the app's database.
+🧩 Technologies Used
+Flask: Web framework for developing the application.
+TensorFlow: Framework for building and deploying machine learning models.
+scikit-image: Library for image processing and computer vision tasks.
+SQLite: Database for storing classification results and other data.
+NOTE:
 
-### Login: Authenticate as a doctor by entering valid credentials.
-
-### Upload & Classify: Upload leukemia images to classify them into specific types or stages.
-
-### Results & Database: View classification results and stored data in the app's database.
-
-# Technologies Used
-
-
-
-Flask
-TensorFlow
-scikit-image
-SQLite (for the database)
-
-NOTE: 
-ALL = acute lymphoblastic leukemia classifier SPA: Leucemia linfoblastica aguda
-HEM -> cell without leukemia
+ALL: Acute Lymphoblastic Leukemia (Spanish: Leucemia linfoblastica aguda)
+HEM: Cells without leukemia
+📸 Example Results
+Here are some examples of the classification results:
 
 
 
 
-![Ejemplo de los resultados:](https://github.com/nicolasvargaszz/acute-lymphoblastic-leukemia-classifier/blob/main/WhatsApp%20Image%202024-07-08%20at%2023.38.07.jpeg)
 
-![Ejemplo de los resultados:](https://github.com/nicolasvargaszz/acute-lymphoblastic-leukemia-classifier/blob/main/WhatsApp%20Image%202024-07-08%20at%2023.27.51.jpeg)
 
-![Ejemplo de los resultados:](https://github.com/nicolasvargaszz/acute-lymphoblastic-leukemia-classifier/blob/main/WhatsApp%20Image%202024-07-08%20at%2023.27.51%20(1).jpeg)
+
+📞 Contact
+For any questions or further information, feel free to reach out:
+
+Twitter: @nicoelingeniero
